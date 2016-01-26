@@ -1,7 +1,7 @@
 <?php
-include ("controller.php");
-include ("view.php");
-include ("model.php");
+include ("Controller.php");
+include ("View.php");
+include ("Model.php");
 //The model is where all of the logic of the program resides.
 $model=new model;
 
