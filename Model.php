@@ -14,11 +14,11 @@ class model{
             }
            $player=1;
         } else if (isset($_POST['data'])){
-           list($board, $player, $move) =json_decode($_POST['data'], true); 
+           list($board, $player, $move ) =json_decode($_POST['data'], true); 
            $board[$move["x"]][$move["y"]] =$player;
            $game=new Game();
            $player=$game->other_player($player);
-            $game->win($board);
+           $game->win($board);
         }  
            $this->data["board"]=$board;
            $this->data["player"]=$player;
