@@ -3,7 +3,8 @@ class Game{
     function win($board){
         if ($this->get_num_of_moves($board)>=5){
             $positions=$this->get_positions($board);
-            if (isset($positions[0]) && sizeof($positions[0])==0){
+            if (isset($positions[0]) && sizeof($positions[0])==0){ //stalemate
+
                 return 3;
             }
             if ($nondiagnol=$this->evaluate_nondiagnolly($positions)){
@@ -13,7 +14,7 @@ class Game{
                 return $diagnol;
             }
         }
-        return 0;
+        return 0; //continue playing
     }
     function evaluate_diagnolly($board){
         if ($board[0][0]!=0 && $board[0][0]==$board[1][1] && $board[1][1]==$board[2][2]){
@@ -22,17 +23,12 @@ class Game{
             return $board[1][1];
         }
     }
-    function other_player($player){
-        return ($player==1)?2:1;
-    }
     function evaluate_nondiagnolly($positions){
         $graph=["x", "y"];
         for($player=1;$player<=2;$player++){
             for($row_or_column=0;$row_or_column<=1;$row_or_column++){
-                //var_dump(array_count_values($positions[$player][$graph[$row_or_column]])); 
                 foreach(array_count_values($positions[$player][$graph[$row_or_column]]) as $num_of_positions){
                     if ($num_of_positions==3){
-                        echo "PLAYER $player won!";
                         return $player;
                     }
                 }
@@ -60,5 +56,8 @@ class Game{
             }
         }
         return $positions;
+    }
+    function other_player($player){
+        return ($player==1)?2:1;
     }
 }
