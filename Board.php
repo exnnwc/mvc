@@ -1,7 +1,7 @@
 <?php
 
 class Board{
-    function view($data){
+    function get($data){
         define("TD_SIZE", 50);
         extract($data);
         $string=" <div><table style='border:1px solid black;'>";

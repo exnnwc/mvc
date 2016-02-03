@@ -1,9 +1,9 @@
 <?php
 include ("Board.php");
 class GameScreen{
-    function view($data){
+    function get($data){
         $board= new Board;
-        $string = "<div style='text-align:center;'>". $board->view($data) . "</div> 
+        $string = "<div style='text-align:center;'>". $board->get($data) . "</div> 
                        <div style='text-align:center;'>
                            <form method='post' action=''>
                            <input type='hidden' name='reset' value='true' />
